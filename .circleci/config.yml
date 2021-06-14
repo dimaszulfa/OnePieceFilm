@@ -23,7 +23,7 @@ jobs:
             - ~/.android/cache
       - run:
           name: Run Build
-          command: ./gradlew assembleMyBuild --stacktrace
+          command: ./gradlew build assembleMyBuild --stacktrace
       - store_artifacts: 
           path: app/build/reports
           destination: reports
