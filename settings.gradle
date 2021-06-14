@@ -1,0 +1,4 @@
+rootProject.name = "OnePieceFilm"
+include ':app'
+include ':core'
+include ':favorite'
