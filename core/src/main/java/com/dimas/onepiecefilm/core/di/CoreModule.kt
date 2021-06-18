@@ -9,6 +9,8 @@ import com.dimas.onepiecefilm.core.source.remote.RemoteDataSource
 import com.dimas.onepiecefilm.core.domain.repository.IOnePieceRepository
 import com.dimas.onepiecefilm.core.utils.Constant.BASE_URL
 import com.dimas.onepiecefilm.core.utils.Constant.DATABASE_NAME
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -21,10 +23,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<OnePieceDatabase>().onePieceDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("onepiece".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             OnePieceDatabase::class.java, DATABASE_NAME
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
