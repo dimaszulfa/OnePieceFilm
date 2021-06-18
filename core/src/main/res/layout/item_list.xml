@@ -47,7 +47,7 @@
         tools:text="Rated PG-13" />
 
     <RatingBar
-        android:id="@+id/rating_bar"
+        android:id="@+id/ratingBar"
         style="@android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
