@@ -46,7 +46,7 @@
 -keepattributes Signature
 -keepattributes Exceptions
 -dontwarn java.lang.invoke.*
--keep class com.idm.onepiecelist.core.source.remote.response.** { *; }
+-keep class com.dimas.onepiecefilm.core.source.remote.response.** { *; }
 -dontwarn retrofit.appengine.UrlFetchClient
 -keepclasseswithmembers class * {
     @retrofit.http.* <methods>;
@@ -54,7 +54,7 @@
 -keepclassmembernames interface * {
     @retrofit.http.* <methods>;
 }
--dontwarn retrofit2.Platform$Java8
+-dontwarn retrofit2.Platform.Java8
 
 -dontwarn retrofit2.**
 -dontwarn org.codehaus.mojo.**
@@ -86,7 +86,6 @@
 
 # Top-level functions that can only be used by Kotlin.
 -dontwarn retrofit2.KotlinExtensions
--dontwarn retrofit2.KotlinExtensions$*
 
 # With R8 full mode, it sees no subtypes of Retrofit interfaces since they are created with a Proxy
 # and replaces all potential values with null. Explicitly keeping the interfaces prevents this.
